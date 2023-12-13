@@ -8,14 +8,14 @@ import re
 #クリックイベントの作成
 def btn_click():
     inputs = txt_input.get()
-    padding = txt_padding.get()
+    output = txt_output.get()
     stride = txt_stride.get()
     kernel = txt_kernel.get()
-    if inputs == '' and padding == '' and stride == '' and kernel == '':
+    if inputs == '' and output == '' and stride == '' and kernel == '':
         pass
     else:
-        output = (int(inputs) - 1) * int(stride) - 2 * int(padding) + int(kernel) - 1 + 1
-        txt_output.insert(0, output)
+        padding = (int(stride) * (int(inputs) - 1) - int(output) + int(kernel)) / 2
+        txt_padding.insert(0, padding)
         
 
 def btn_click_delete():
@@ -35,13 +35,13 @@ labeltitle.place(x=200, y=50)
 label_input = tkinter.Label(text='input data size', font=("Times", 30))
 label_input.place(x=200, y=200)
 label_output = tkinter.Label(text='output data size', font=("Times", 30))
-label_output.place(x=200, y=400)
+label_output.place(x=200, y=250)
 label_stride = tkinter.Label(text='stride', font=("Times", 30))
 label_stride.place(x=200, y=300)
 label_kernel = tkinter.Label(text='kernel', font=("Times", 30))
 label_kernel.place(x=200, y=350)
 label_padding = tkinter.Label(text='padding', font=("Times", 30))
-label_padding.place(x=200, y=250)
+label_padding.place(x=200, y=400)
 
 
 
